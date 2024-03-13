@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Cat;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -39,5 +40,71 @@ public class CatTest {
         Assert.assertEquals(givenBirthDate, retrievedBirthDate);
         Assert.assertEquals(givenId, retrievedId);
     }
+    @Test
+    public void testSetName() {
+        // Given
+        Cat cat = new Cat("Zula",null,null);
+        String expected = "Ethan";
+
+        // When
+        cat.setName(expected);
+        String actual = cat.getName();
+
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void speakTest() {
+        // Given
+        Cat cat = new Cat("Zula",new Date(),0);
+        String expected = "meow!";
+
+        // When
+        String actual = cat.speak();
+
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void setBirthDate(){
+       //Given
+        Cat cat = new Cat("Zula",new Date(),0);
+        Date expected = new Date();
+
+        //When
+        Date actual = cat.getBirthDate();
+
+        //Then
+        Assert.assertEquals(expected,actual);
+
+    }
+    @Test
+    public void eatTest() {
+        // Given
+        Cat cat = new Cat("Zula",new Date(),0);
+        String expected = "meow!";
+
+        // When
+        String actual = cat.eat();
+
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+
+
+//    private ArrayList<Food> eatenMeals;
+
+//    this.eatenMeals = new ArrayList<>();
+
+//    public Integer getNumberOfMealsEaten() {
+//        return eatenMeals.size();
+//    }
+
+    //    public void eat(Food food) {
+//        eatenMeals.add(food);
+//    }
+
+
 
 }
