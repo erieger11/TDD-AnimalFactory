@@ -11,15 +11,6 @@ import java.util.Date;
  * @author leon on 4/19/18.
  */
 public class CatTest {
-    // TODO - Create tests for `void setName(String name)`
-    // TODO - Create tests for `speak`
-    // TODO - Create tests for `setBirthDate(Date birthDate)`
-    // TODO - Create tests for `void eat(Food food)`
-    // TODO - Create tests for `Integer getId()`
-    // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
-    // TODO - Create test to check Mammal inheritance; google search `java instanceof keyword`
-
-
     @Test
     public void constructorTest() {
         // Given (cat data)
@@ -40,6 +31,10 @@ public class CatTest {
         Assert.assertEquals(givenBirthDate, retrievedBirthDate);
         Assert.assertEquals(givenId, retrievedId);
     }
+
+
+
+    // TODO - Create tests for `void setName(String name)`
     @Test
     public void testSetName() {
         // Given
@@ -54,6 +49,10 @@ public class CatTest {
         Assert.assertEquals(expected, actual);
     }
 
+
+
+
+    // TODO - Create tests for `speak`
     @Test
     public void speakTest() {
         // Given
@@ -66,6 +65,10 @@ public class CatTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
+
+
+
+    // TODO - Create tests for `setBirthDate(Date birthDate)`
     @Test
     public void setBirthDate(){
        //Given
@@ -73,12 +76,17 @@ public class CatTest {
         Date expected = new Date();
 
         //When
+        cat.setBirthDate(expected);
         Date actual = cat.getBirthDate();
 
         //Then
         Assert.assertEquals(expected,actual);
 
     }
+
+
+    //TODO    Create tests for void eat(Food food)
+    // ensure that when .eat is invoked on an instance of Cat, the numberOfMealsEaten is increased by 1.
     @Test
     public void eatTest() {
         // Given
@@ -105,6 +113,25 @@ public class CatTest {
 //        eatenMeals.add(food);
 //    }
 
+//   TODO   Create tests for Integer getId()
+//    ensure that when .getId is invoked on an instance of Cat, the respective id value is returned.
+@Test
+public void testId() {
+    // Given
+    Cat cat = new Cat("Zula",new Date(),0);
+    Integer expected = 189;
 
+    // When
+    cat.setId(expected);
+    Integer actual = cat.getId();
+
+    // Then
+    Assert.assertEquals(expected, actual);
+}
+    // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
+
+
+
+    // TODO - Create test to check Mammal inheritance; google search `java instanceof keyword`
 
 }
