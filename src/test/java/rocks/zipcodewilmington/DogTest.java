@@ -2,9 +2,12 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.Dog;
+import rocks.zipcodewilmington.animals.Mammal;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -53,7 +56,7 @@ public class DogTest {
     @Test
     public void speakTest() {
         // Given
-        Dog dog = new Dog("Rex",new Date(),0);
+        Dog dog = new Dog(null,null,null);
         String expected = "bark!";
 
         // When
@@ -70,8 +73,8 @@ public class DogTest {
     @Test
     public void setBirthDate(){
         //Given
-        Dog dog = new Dog("Rex",new Date(),0);
-        Date expected = new Date();
+        Dog dog = new Dog(null,null,null);
+        Date expected = new Date(2000, Calendar.MAY, 30);
 
         //When
         dog.setBirthDate(expected);
@@ -86,7 +89,18 @@ public class DogTest {
 
 
     // TODO - Create tests for `void eat(Food food)`
+@Test
+public void eatTest() {
+    Dog dog = new Dog(null, null, null);
+    Food food = new Food();
+    int expected = dog.getNumberOfMealsEaten();
 
+    //when
+    dog.eat(food);
+    int actual = dog.getNumberOfMealsEaten();
+
+    Assert.assertEquals(expected + 1, actual);
+}
 
 
 
@@ -94,11 +108,12 @@ public class DogTest {
     @Test
     public void testId() {
         // Given
-        Dog dog = new Dog("Rex",new Date(),0);
-        Integer expected = 189;
+        Integer expected = 981;
+
+        Dog dog = new Dog("Rex",new Date(),expected);
 
         // When
-        dog.setId(expected);
+       // dog.setId(expected);
         Integer actual = dog.getId();
 
         // Then
@@ -109,12 +124,20 @@ public class DogTest {
 
 
     // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
-
+@Test
+    public void testInstanceOfAnimal(){
+        Dog dog = new Dog(null,null,null);
+        Assert.assertTrue(dog instanceof Animal);
+}
 
 
 
     // TODO - Create test to check Mammal inheritance; google search `java instanceof keyword`
-
+    @Test
+    public void testInstanceOfMammal(){
+        Dog dog = new Dog(null,null,null);
+        Assert.assertTrue(dog instanceof Mammal);
+    }
 
 
 }

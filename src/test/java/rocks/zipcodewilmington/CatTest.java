@@ -2,9 +2,12 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -38,7 +41,7 @@ public class CatTest {
     @Test
     public void testSetName() {
         // Given
-        Cat cat = new Cat("Zula",null,null);
+        Cat cat = new Cat(null,null,null);
         String expected = "Ethan";
 
         // When
@@ -56,7 +59,7 @@ public class CatTest {
     @Test
     public void speakTest() {
         // Given
-        Cat cat = new Cat("Zula",new Date(),0);
+        Cat cat = new Cat(null,null,null);
         String expected = "meow!";
 
         // When
@@ -72,8 +75,8 @@ public class CatTest {
     @Test
     public void setBirthDate(){
        //Given
-        Cat cat = new Cat("Zula",new Date(),0);
-        Date expected = new Date();
+        Cat cat = new Cat(null,null,null);
+        Date expected = new Date(2011, Calendar.APRIL,14);
 
         //When
         cat.setBirthDate(expected);
@@ -90,39 +93,27 @@ public class CatTest {
     @Test
     public void eatTest() {
         // Given
-        Cat cat = new Cat("Zula",new Date(),0);
-        String expected = "meow!";
+        Cat cat = new Cat(null,null,null);
+        Food food = new Food();
+        int expected = cat.getNumberOfMealsEaten();
 
         // When
-        String actual = cat.eat();
+        cat.eat(food);
+        int actual = cat.getNumberOfMealsEaten();
 
         // Then
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected+1, actual);
     }
-
-
-//    private ArrayList<Food> eatenMeals;
-
-//    this.eatenMeals = new ArrayList<>();
-
-//    public Integer getNumberOfMealsEaten() {
-//        return eatenMeals.size();
-//    }
-
-    //    public void eat(Food food) {
-//        eatenMeals.add(food);
-//    }
 
 //   TODO   Create tests for Integer getId()
 //    ensure that when .getId is invoked on an instance of Cat, the respective id value is returned.
 @Test
 public void testId() {
     // Given
-    Cat cat = new Cat("Zula",new Date(),0);
     Integer expected = 189;
+    Cat cat = new Cat(null,null,expected);
 
     // When
-    cat.setId(expected);
     Integer actual = cat.getId();
 
     // Then
@@ -130,8 +121,18 @@ public void testId() {
 }
     // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
 
+    @Test
+    public void testInstanceOfAnimal() {
+        Cat cat = new Cat(null, null, null);
+        Assert.assertTrue(cat instanceof Animal);
+    }
 
 
     // TODO - Create test to check Mammal inheritance; google search `java instanceof keyword`
 
+    @Test
+    public void testInstanceOfMammal() {
+        Cat cat = new Cat(null, null, null);
+        Assert.assertTrue(cat instanceof Mammal);
+    }
 }
